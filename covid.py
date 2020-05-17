@@ -89,6 +89,7 @@ def init():
     action=args['column']    
     # test_df,train_df=test_train_split(df[action])
     # forcast_df=forcast(train_df,test_df)
+    # start_date = df.index[-1]
     
     
     ax=plot_graph("",df,None)
