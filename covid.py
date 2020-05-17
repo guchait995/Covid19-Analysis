@@ -72,7 +72,6 @@ def parse_arguments():
     parser=argparse.ArgumentParser()
     parser.add_argument('--days', help=DAYS_HELP_TEXT,default=7)
     parser.add_argument('--column', help=COLUMN_HELP_TEXT,default="totalconfirmed")
-    
     args=parser.parse_args()
     d=vars(args)
     return d
