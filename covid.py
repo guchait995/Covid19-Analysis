@@ -1,12 +1,11 @@
-import requests
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-import numpy
-from pmdarima import auto_arima
-from datetime import timedelta
 import sys
 import argparse, sys
+from datetime import timedelta
+from preconfig import installAndImport
+[requests,numpy,pd,mpl,pmdarima]=installAndImport(libs=['requests','numpy','pandas','matplotlib','pmdarima'])
+
+plt=mpl.pyplot
+
 BASE_URL="https://api.covid19india.org"
 NATIONAL_DATA_URL="{}/data.json".format(BASE_URL)
 COLUMN_HELP_TEXT='Pass Column on which you want to forcast - Options:[ totalconfirmed | totaldeceased | totalrecovered | active | all]'
@@ -47,7 +46,7 @@ def test_train_split(df,test_length=7):
     
 def find_arima(df):
     print(df)
-    model=auto_arima(df,m=1)
+    model=pmdarima.auto_arima(df,m=1)
     return model
 
 def forcast(train_df,test_df,test_length=7):
